@@ -8,4 +8,3 @@ Containerized Desktop Infrastructure (CDI) is extremly light weight desktop virt
 # Dockerfiles
 
 This repository is for CDI application layers. All application is simplly fetched with pacman, and present software assets on archlinux community can be seamlessly integrated to CDI with few modifications.
-
