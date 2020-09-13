@@ -1,0 +1,40 @@
+ARG coshapp_ver
+FROM archlinux/base:${coshapp_ver:-latest} as builder
+label maintainer="Okadarien Saru <okadas@dev.sysnk.net>"
+
+RUN pacman -Sy --noconfirm sudo
+RUN pacman -Sy --noconfirm mate xorg-server xorg-drivers
+RUN pacman -Sy --noconfirm noto-fonts 
+RUN pacman -Sy --noconfirm base-devel
+RUN pacman -Sy --noconfirm git
+RUN pacman -S --clean --noconfirm
+RUN useradd -m auser
+RUN usermod -g wheel auser
+RUN sed -r -i -e "s/^#+[[:blank:]]+%wheel.+NOPASSWD.*/%wheel ALL=(ALL) NOPASSWD: ALL/g" /etc/sudoers
+USER auser
+WORKDIR /home/auser
+RUN git config --global user.name Saru
+RUN git config --global user.email saru@example.com
+RUN git clone https://aur.archlinux.org/code-git.git
+WORKDIR /home/auser/code-git
+RUN makepkg -s --noprepare --nobuild --noconfirm
+RUN makepkg -s --noconfirm
+
+FROM archlinux/base:${coshapp_ver:-latest}
+label maintainer="Okadarien Saru <okadas@dev.sysnk.net>"
+
+RUN echo ja_JP.UTF-8 UTF-8 >> /etc/locale.gen
+RUN locale-gen
+
+RUN pacman -Sy --noconfirm sudo
+RUN pacman -Sy --noconfirm mate xorg-server xorg-drivers
+RUN pacman -Sy --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji
+RUN pacman -Sy --noconfirm base-devel
+RUN pacman -Sy --noconfirm git python2
+RUN useradd -u 1000 -m auser
+COPY --from=builder /home/auser/code-git/code-git-*.zst /code-x86_64.pkg.tar.zst
+RUN pacman -U --noconfirm /code-x86_64.pkg.tar.zst
+USER auser
+WORKDIR /home/auser
+
+CMD /bin/sh

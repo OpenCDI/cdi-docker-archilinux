@@ -1,0 +1,14 @@
+ARG coshapp_ver
+FROM archlinux/base:${coshapp_ver:-latest}
+label maintainer="Okadarien Saru <okadas@dev.sysnk.net>"
+
+RUN echo ja_JP.UTF-8 UTF-8 >> /etc/locale.gen
+RUN locale-gen
+
+RUN pacman -Sy --noconfirm sudo
+RUN pacman -Sy --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji
+RUN pacman -Sy --noconfirm xorg-server-xwayland kwayland kwayland-integration plasma-wayland-session qt5-wayland sddm
+RUN pacman -Sy --noconfirm imv grim mako swaybg
+RUN pacman -S --clean --noconfirm
+RUN useradd -m auser
+CMD /bin/sh
