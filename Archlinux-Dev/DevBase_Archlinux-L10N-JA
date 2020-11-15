@@ -6,15 +6,11 @@ RUN pacman -Sy --noconfirm sudo
 RUN pacman -Sy --noconfirm mate xorg-server xorg-drivers
 RUN pacman -Sy --noconfirm noto-fonts 
 RUN pacman -Sy --noconfirm base-devel
+RUN pacman -Sy --noconfirm git
 RUN pacman -S --clean --noconfirm
 RUN useradd -m auser
 RUN usermod -g wheel auser
 RUN sed -r -i -e "s/^#+[[:blank:]]+%wheel.+NOPASSWD.*/%wheel ALL=(ALL) NOPASSWD: ALL/g" /etc/sudoers
 USER auser
 WORKDIR /home/auser
-RUN git config --global user.name Saru
-RUN git config --global user.email saru@example.com
-RUN git clone https://aur.archlinux.org/code-git.git
-WORKDIR /home/auser/code-git
-RUN makepkg -s --noprepare --nobuild --noconfirm
 CMD /bin/sh
