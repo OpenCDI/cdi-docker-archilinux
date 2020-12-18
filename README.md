@@ -1,5 +1,5 @@
-![archlinux](https://github.com/coshdev/coshapp-docker/workflows/archlinux/badge.svg)
-![archlinux-dev](https://github.com/coshdev/coshapp-docker/workflows/archlinux-dev/badge.svg)
+![archlinux](https://github.com/okadash/cdi-docker-archlinux/workflows/archlinux/badge.svg)
+![archlinux-dev](https://github.com/okadash/cdi-docker-archlinux/workflows/archlinux-dev/badge.svg)
 
 # ABOUT
 
