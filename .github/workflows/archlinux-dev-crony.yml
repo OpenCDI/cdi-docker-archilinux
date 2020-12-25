@@ -1,10 +1,8 @@
-name: archlinux
+name: archlinux-dev
 
 on:
-  push:
-    # Publish `master` as Docker `latest` image.
-    branches:
-      - master
+  schedule:
+    - cron '25 18 * * *'
 
 env:
   LOGIN_NAME: coshapp
@@ -24,8 +22,8 @@ jobs:
       - name: Log into registry
         run: echo "${{ secrets.DOCKERHUB_SECRET }}" | docker login --username okadash --password-stdin
 
-      - name: Build and push Archlinux images
+      - name: Build and push Archlinux Developper's images
         run: |
           . workflow_functions.sh
-          coshapp_ver=latest build_image Archlinux/*
+          coshapp_ver=latest build_image Archlinux-Dev/*
 
