@@ -4,9 +4,9 @@
 # ABOUT
 
 Containerized Desktop Infrastructure (CDI) is an extremly light-weight desktop virtualization mechanisms. 
-Make your VDI more fast, compact ant suitable to more smaller systems.
+Make your VDI more fast, compact and suitable to more smaller systems.
 
-You can also make containerized desktop environment, which is more tolerant to security violation.
+You can also make containerized desktop environment, which is more tolerant to security violation than orginal Linux desktop.
 
 # Dockerfiles
 
