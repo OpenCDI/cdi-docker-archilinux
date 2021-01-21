@@ -11,7 +11,7 @@ jobs:
 
   # Push image to DockerHub.
   # See also https://docs.docker.com/docker-hub/builds/
-  push:
+  rolling-push:
 
     runs-on: ubuntu-latest
 
