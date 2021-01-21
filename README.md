@@ -14,7 +14,7 @@ This is the [OpenCDI](https://github.com/opencdi/opencdi-scripts) application la
 All application is simplly fetched with pacman, and present software assets on archlinux community can be seamlessly integrated to CDI with few modifications.
 OpenCDI and its application layer Dockerfiles are fully opensource (MIT) and you are welcome to modify or fork them.
 
-To get docker images, pull from our [DockerHub account](https://hub.docker.com/_/u/coshapp).
+To get docker images, pull from our [repository on DockerHub](https://hub.docker.com/u/coshapp).
 
 ```
 docker pull coshapp/core:archlinux-latest
