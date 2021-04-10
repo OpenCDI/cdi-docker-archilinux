@@ -1,4 +1,4 @@
-name: archlinux
+name: build-and-push-images
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
 
   # Push image to DockerHub.
   # See also https://docs.docker.com/docker-hub/builds/
-  push:
+  push-production:
 
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
@@ -24,8 +24,10 @@ jobs:
       - name: Log into registry
         run: echo "${{ secrets.DOCKERHUB_SECRET }}" | docker login --username okadash --password-stdin
 
-      - name: Build and push Archlinux images
+      - name: Build and push Debian Base images
         run: |
-          . workflow_functions.sh
-          coshapp_ver=latest build_image Archlinux/*
-
+          . .github_script.sh
+          build_image Archlinux/Core_*
+          push_image Archlinux/Core_*
+          build_image Archlinux/*
+          push_image Archlinux/*

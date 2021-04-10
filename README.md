@@ -1,5 +1,4 @@
 ![archlinux](https://github.com/opencdi/cdi-docker-archlinux/workflows/archlinux/badge.svg)
-![archlinux-dev](https://github.com/opencdi/cdi-docker-archlinux/workflows/archlinux-dev/badge.svg)
 
 # ABOUT
 
@@ -17,5 +16,5 @@ OpenCDI and its application layer Dockerfiles are fully opensource (MIT) and you
 To get docker images, pull from our [repository on DockerHub](https://hub.docker.com/u/coshapp).
 
 ```
-docker pull coshapp/core:archlinux-latest
+docker pull coshapp/core:archlinux
 ```

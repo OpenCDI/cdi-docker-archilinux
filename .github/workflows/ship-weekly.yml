@@ -1,8 +1,8 @@
-name: archlinux
+name: build-and-push-weekly
 
 on:
   schedule:
-    - cron: '25 18 * * *'
+    - cron: '3 20 * * 6'
 
 env:
   LOGIN_NAME: coshapp
@@ -10,7 +10,6 @@ env:
 jobs:
 
   # Push image to DockerHub.
-  # See also https://docs.docker.com/docker-hub/builds/
   rolling-push:
 
     runs-on: ubuntu-latest
@@ -21,8 +20,8 @@ jobs:
       - name: Log into registry
         run: echo "${{ secrets.DOCKERHUB_SECRET }}" | docker login --username okadash --password-stdin
 
-      - name: Build and push Archlinux images
+      - name: Build and push Archlinux Base images
         run: |
-          . workflow_functions.sh
-          coshapp_ver=latest build_image Archlinux/*
-
+          . .github_script.sh
+          build_image Archlinux/*
+          push_image Archlinux/*

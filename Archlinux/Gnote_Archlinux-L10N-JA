@@ -1,15 +1,6 @@
-ARG coshapp_ver
-FROM archlinux/base:${coshapp_ver:-latest}
-label maintainer="Okadarien Saru <okadas@dev.sysnk.net>"
+FROM coshapp/core:archlinux-l10n-ja
 
-RUN echo ja_JP.UTF-8 UTF-8 >> /etc/locale.gen
-RUN locale-gen
-
-RUN pacman -Sy --noconfirm sudo
-RUN pacman -Sy --noconfirm mate xorg-server xorg-drivers
-RUN pacman -Sy --noconfirm noto-fonts noto-fonts-cjk noto-fonts-emoji
 RUN pacman -Sy --noconfirm gnote
 RUN pacman -S --clean --noconfirm
-RUN useradd -m auser
-RUN test -e /usr/lib64/libffi.so.7 || ln -sv /usr/lib64/libffi.so.6 /usr/lib64/libffi.so.7
+USER auser
 CMD /bin/sh

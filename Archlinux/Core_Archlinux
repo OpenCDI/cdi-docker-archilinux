@@ -1,11 +1,8 @@
-ARG coshapp_ver
-FROM archlinux/base:${coshapp_ver:-latest}
-label maintainer="Okadarien Saru <okadas@dev.sysnk.net>"
+FROM archlinux/base:latest
 
-RUN pacman -Sy --noconfirm sudo
+RUN pacman -Sy --noconfirm sudo curl
 RUN pacman -Sy --noconfirm mate xorg-server xorg-drivers
-RUN pacman -Sy --noconfirm noto-fonts 
-RUN pacman -Sy --noconfirm curl
+RUN pacman -Sy --noconfirm noto-fonts
 RUN pacman -S --clean --noconfirm
 RUN useradd -m auser
 RUN test -e /usr/lib64/libffi.so.7 || ln -sv /usr/lib64/libffi.so.6 /usr/lib64/libffi.so.7
