@@ -1,7 +1,7 @@
 FROM archlinux/base:latest
 
 RUN pacman -Syu --noconfirm
-RUN pacman -Sy --noconfirm sudo curl glibc
+RUN pacman -Sy --noconfirm sudo curl
 RUN pacman -Sy --noconfirm mate xorg-server xorg-drivers
 RUN pacman -Sy --noconfirm noto-fonts
 RUN pacman -S --clean --noconfirm
