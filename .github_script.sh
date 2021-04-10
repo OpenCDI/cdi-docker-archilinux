@@ -27,9 +27,9 @@ build_image(){
   # for autobuild and shipping on \*-test (but not core-test) branches
   if [ -n "$TEST_TARGET" ] && [ "$TEST_TARGET" = "${TEST_TARGET#core*}" ]; then 
     docker pull coshapp/core:archlinux-test
-    docker pull coshapp/core:archlinux-test
+    docker pull coshapp/core:archlinux-l10n-ja-test
     docker tag coshapp/core:archlinux-test coshapp/core:archlinux
-    docker tag coshapp/core:archlinux-test coshapp/core:archlinux
+    docker tag coshapp/core:archlinux-l10n-ja-test coshapp/core:archlinux-l10n-ja
   fi
   for j in $@; do
     set_image_name "$j" ;
