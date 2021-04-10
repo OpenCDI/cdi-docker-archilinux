@@ -7,7 +7,7 @@ RUN pacman -Sy --noconfirm noto-fonts
 RUN echo ja_JP.UTF-8 UTF-8 >> /etc/locale.gen
 RUN pacman -Sy --noconfirm noto-fonts-cjk noto-fonts-emoji
 RUN locale-gen
-RUN pacman -Sy --noconfirm fcitx fcitx-mozc fcitx-configtools
+RUN pacman -Sy --noconfirm fcitx fcitx-mozc fcitx-configtool
 RUN pacman -S --clean --noconfirm
 RUN useradd -m auser
 RUN test -e /usr/lib64/libffi.so.7 || ln -sv /usr/lib64/libffi.so.6 /usr/lib64/libffi.so.7
